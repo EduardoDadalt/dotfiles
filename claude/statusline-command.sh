@@ -9,6 +9,7 @@ RESET="\033[0m"
 CYAN="\033[36m"
 YELLOW="\033[33m"
 MAGENTA="\033[35m"
+GREEN="\033[32m"
 
 model=$(echo "$input" | jq -r '.model.display_name // empty')
 effort=$(echo "$input" | jq -r '.effort.level // empty')
@@ -38,6 +39,14 @@ fi
 
 if [ -n "$segment" ]; then
   parts+=("$segment")
+fi
+
+cwd=$(echo "$input" | jq -r '.workspace.current_dir // .cwd // empty')
+if [ -n "$cwd" ]; then
+  branch=$(git -C "$cwd" --no-optional-locks symbolic-ref --short HEAD 2>/dev/null || git -C "$cwd" --no-optional-locks rev-parse --short HEAD 2>/dev/null)
+  if [ -n "$branch" ]; then
+    parts+=("$(printf "${DIM}${GREEN}%s${RESET}" "$branch")")
+  fi
 fi
 
 if [ -n "$ctx_used" ]; then
