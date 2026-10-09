@@ -1,4 +1,3 @@
-appmenu-gtk-module
 aspnet-runtime
 aspnet-targeting-pack
 base
@@ -11,11 +10,6 @@ fzf
 git
 github-cli
 jq
-libappindicator
-libbsd
-libice
-libsm
-libxkbfile
 man-db
 man-pages
 mesa
@@ -30,9 +24,7 @@ trivy
 unzip
 uv
 vulkan-dzn
-webkit2gtk-4.1
 wget
-xdotool
 zip
 zoxide
 zsh
