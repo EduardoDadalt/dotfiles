@@ -121,7 +121,7 @@ zsh -ic exit
 ```
 
 `zsh -ic exit` não deve imprimir erros. Informe o diretório de backup criado
-pelo setup em `~/.local/state/agent-config/backups/`.
+pelo setup em `~/.local/state/dotfiles/backups/`.
 
 ## 6. Encerrar
 

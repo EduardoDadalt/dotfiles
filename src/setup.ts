@@ -35,7 +35,7 @@ const backupRoot = join(
   homeDir,
   ".local",
   "state",
-  "agent-config",
+  "dotfiles",
   "backups",
   timestamp,
 );

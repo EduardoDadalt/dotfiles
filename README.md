@@ -1,4 +1,4 @@
-# Agent Config
+# Dotfiles
 
 Fonte única para instruções globais e skills pessoais usadas pelo Codex e pelo
 Claude Code, e para os dotfiles compartilhados entre as máquinas Arch Linux
@@ -32,8 +32,8 @@ Num Arch Linux (WSL) recém-instalado, com um usuário com `sudo`:
 
 ```bash
 sudo pacman -S --needed git
-git clone https://github.com/EduardoDadalt/agent-config.git ~/repo/agent-config
-~/repo/agent-config/bootstrap.sh
+git clone https://github.com/EduardoDadalt/dotfiles.git ~/repo/dotfiles
+~/repo/dotfiles/bootstrap.sh
 ```
 
 O script instala os pacotes das listas, o `yay`, Oh My Zsh e seus plugins, nvm,
@@ -76,7 +76,7 @@ O setup configura:
 ```
 
 Destinos existentes são movidos para um diretório datado em
-`~/.local/state/agent-config/backups/` antes da criação dos links. Executar o
+`~/.local/state/dotfiles/backups/` antes da criação dos links. Executar o
 setup novamente é seguro: links corretos não são recriados.
 
 ## Dotfiles
