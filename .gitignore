@@ -1,4 +1,4 @@
 node_modules/
 .DS_Store
-skills/.trash/
-skills/synced/
+agents/skills/.trash/
+agents/skills/synced/

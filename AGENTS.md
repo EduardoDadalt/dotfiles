@@ -2,11 +2,11 @@
 
 ## Project Structure & Module Organization
 
-This repository is the canonical source for personal Codex and Claude Code configuration. TypeScript utilities live in `src/`: `config.ts` defines paths and link specifications, `setup.ts` installs symbolic links with backups, and `doctor.ts` validates an installation. Global agent instructions are stored in `instructions/`. Each directory under `skills/` is a self-contained skill with a required `SKILL.md`; supporting templates and `agents/openai.yaml` belong beside that skill. Project metadata is in `package.json`, `bun.lock`, and `tsconfig.json`.
+This repository is the canonical source for personal Codex and Claude Code configuration and for the dotfiles shared across personal Arch Linux (WSL) machines. TypeScript utilities live in `src/`: `config.ts` defines paths and link specifications, `setup.ts` installs symbolic links with backups, and `doctor.ts` validates an installation. Agent files live in `agents/`: global instructions in `agents/instructions/`, the Claude Code statusline in `agents/claude/`, and skills in `agents/skills/`. Each directory under `agents/skills/` is a self-contained skill with a required `SKILL.md`; supporting templates and the skill's own `agents/openai.yaml` belong beside that skill. Dotfiles live in `home/`, mirroring `~`: every file there is linked to the same relative path under the home directory, so adding a file to `home/` is enough to manage it. Machine-specific settings belong in untracked `.local` files (for example `~/.zshrc.local`), never in templates. Project metadata is in `package.json`, `bun.lock`, and `tsconfig.json`.
 
 ## Skill Management
 
-Create new personal skills directly in `skills/<skill-name>/` within this repository, including any supporting resources. Pass this destination explicitly to skill creation tools. The existing `~/.agents/skills` and `~/.claude/skills` symbolic links expose this directory to Codex and Claude Code.
+Create new personal skills directly in `agents/skills/<skill-name>/` within this repository, including any supporting resources. Pass this destination explicitly to skill creation tools. The existing `~/.agents/skills` and `~/.claude/skills` symbolic links expose this directory to Codex and Claude Code.
 
 ## Build, Test, and Development Commands
 
