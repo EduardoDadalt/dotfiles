@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-This repository is the canonical source for personal Codex and Claude Code configuration and for the dotfiles shared across personal Arch Linux (WSL) machines. TypeScript utilities live in `src/`: `config.ts` defines paths and link specifications, `setup.ts` installs symbolic links with backups, and `doctor.ts` validates an installation. Agent files live in `agents/`: global instructions in `agents/instructions/`, the Claude Code statusline in `agents/claude/`, and skills in `agents/skills/`. Each directory under `agents/skills/` is a self-contained skill with a required `SKILL.md`; supporting templates and the skill's own `agents/openai.yaml` belong beside that skill. Dotfiles live in `home/`, mirroring `~`: every file there is linked to the same relative path under the home directory, so adding a file to `home/` is enough to manage it. Machine-specific settings belong in untracked `.local` files (for example `~/.zshrc.local`), never in templates. Project metadata is in `package.json`, `bun.lock`, and `tsconfig.json`.
+This repository is the canonical source for personal Codex and Claude Code configuration and for the dotfiles shared across personal Arch Linux (WSL) machines. TypeScript utilities live in `src/`: `config.ts` defines paths and link specifications, `setup.ts` installs symbolic links with backups, and `doctor.ts` validates an installation. Agent files live in `agents/`: global instructions in `agents/instructions/`, the Claude Code statusline in `agents/claude/`, and skills in `agents/skills/`. Each directory under `agents/skills/` is a self-contained skill with a required `SKILL.md`; supporting templates and the skill's own `agents/openai.yaml` belong beside that skill. Dotfiles live in `home/`, mirroring `~`: every file there is linked to the same relative path under the home directory, so adding a file to `home/` is enough to manage it. Machine-specific settings belong in untracked `.local` files (for example `~/.zshrc.local`), never in templates. `bootstrap.sh` prepares a fresh machine: it installs the packages listed in `packages/pacman.txt` and `packages/aur.txt` plus tools that use their own installers, then runs the setup. Keep it a linear, idempotent Bash script where every step skips work that is already done. Project metadata is in `package.json`, `bun.lock`, and `tsconfig.json`.
 
 ## Skill Management
 
@@ -15,6 +15,7 @@ Create new personal skills directly in `agents/skills/<skill-name>/` within this
 - `bun run setup -- --dry-run` previews link creation and backup actions. Run this before applying configuration changes.
 - `bun run setup -- --apply` installs the configured links into the user’s home directory.
 - `bun run doctor` checks Bun, repository links, instruction imports, and skill metadata.
+- `./bootstrap.sh` installs packages and tools on a fresh machine, then applies the links after confirmation. Validate changes with `bash -n bootstrap.sh`; running it calls `sudo pacman -Syu`.
 
 There is no build artifact; Bun executes the TypeScript sources directly.
 

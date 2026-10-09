@@ -17,11 +17,36 @@ Claude Code, e para os dotfiles compartilhados entre as máquinas Arch Linux
 - `agents/skills/`: cópia canônica das skills pessoais.
 - `agents/claude/statusline-command.sh`: script da statusline do Claude Code,
   referenciado por `statusLine.command` em `~/.claude/settings.json`.
+- `packages/pacman.txt` e `packages/aur.txt`: pacotes instalados pelo
+  `bootstrap.sh` (um por linha; `#` inicia comentário).
+- `bootstrap.sh`: prepara uma máquina nova e termina aplicando os links.
 - `home/`: dotfiles, espelhando `~`. Cada arquivo é ligado ao mesmo caminho
   relativo no diretório pessoal; basta adicionar um arquivo aqui para
   gerenciá-lo.
 - `src/setup.ts`: instala os links, com dry-run e backup automático.
 - `src/doctor.ts`: valida links, instruções e estrutura das skills.
+
+## Máquina nova
+
+Num Arch Linux (WSL) recém-instalado, com um usuário com `sudo`:
+
+```bash
+sudo pacman -S --needed git
+git clone https://github.com/EduardoDadalt/agent-config.git ~/repo/agent-config
+~/repo/agent-config/bootstrap.sh
+```
+
+O script instala os pacotes das listas, o `yay`, Oh My Zsh e seus plugins, nvm,
+Rust, Bun, pnpm, Flutter, Claude Code e Codex, ignorando o que já existir. Ao
+final mostra o dry-run do setup e pede confirmação antes de criar os links.
+Pode ser executado novamente a qualquer momento.
+
+Se a máquina já tinha configurações próprias, siga o
+[`MIGRATION.md`](MIGRATION.md) com um agente antes do bootstrap: ele compara a
+máquina com o repositório e pergunta o que deve ser sincronizado.
+
+Para incluir um pacote em todas as máquinas, adicione-o a `packages/pacman.txt`
+(repositórios oficiais) ou `packages/aur.txt`.
 
 ## Instalação
 
