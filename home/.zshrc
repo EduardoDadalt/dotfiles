@@ -93,6 +93,10 @@ plugins=(
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
+# Flutter também antes do Oh My Zsh: o plugin flutter gera o completion na
+# carga e, sem isso, usaria o Flutter do Windows herdado do PATH do WSL
+export PATH="$HOME/development/flutter/bin:$PATH"
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -144,7 +148,30 @@ esac
 # >>> Codex installer >>>
 export PATH="$HOME/.local/bin:$PATH"
 # <<< Codex installer <<<
-export PATH="$HOME/development/flutter/bin:$PATH"
+
+# Vite+ (https://viteplus.dev): carregado depois dos demais PATHs para que seus
+# node, bun e pnpm tenham prioridade e para que o compdef já exista
+[ -f "$HOME/.config/vite-plus/env" ] && . "$HOME/.config/vite-plus/env"
+
+export VISUAL="code --wait"
+export EDITOR="code --wait"
+export BROWSER='/mnt/c/WINDOWS/explorer.exe'
+
+# Abre o Explorer do Windows no caminho informado (padrão: diretório atual).
+# Para arquivos, abre a pasta que o contém e deixa o arquivo selecionado.
+explorer() {
+  local alvo="${1:-.}"
+  local caminho
+  caminho="$(wslpath -w "$alvo")" || return 1
+
+  if [[ -f "$alvo" ]]; then
+    explorer.exe /select,"$caminho"
+  else
+    explorer.exe "$caminho"
+  fi
+  # O explorer.exe sempre retorna código 1, mesmo quando funciona
+  return 0
+}
 
 # Configurações específicas desta máquina (não versionadas)
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"

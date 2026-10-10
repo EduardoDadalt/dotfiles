@@ -78,6 +78,11 @@ if [ ! -x "$HOME/.bun/bin/bun" ]; then
   curl -fsSL https://bun.sh/install | bash
 fi
 
+step "Vite+"
+if [ ! -d "$HOME/.local/share/vite-plus" ]; then
+  curl -fsSL https://vite.plus | bash
+fi
+
 step "pnpm"
 if [ ! -d "$HOME/.local/share/pnpm" ]; then
   curl -fsSL https://get.pnpm.io/install.sh | sh -
