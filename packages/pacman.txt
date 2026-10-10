@@ -25,6 +25,7 @@ unzip
 uv
 vulkan-dzn
 wget
+xdg-utils
 zip
 zoxide
 zsh
