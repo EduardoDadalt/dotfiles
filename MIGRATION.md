@@ -50,7 +50,7 @@ Monte uma tabela por categoria. Para cada item, classifique como: **igual**,
 ### Configuração dos agentes
 
 - Compare `~/.codex/AGENTS.md`, `~/.claude/CLAUDE.md` e
-  `~/.claude/statusline-command.sh` com `agents/`.
+  `~/.claude/statusline.ts` com `agents/`.
 - Liste as skills em `~/.agents/skills` e `~/.claude/skills` que não existem em
   `agents/skills/`. Ignore `synced/` e `.trash/`, que são gerenciados pelo
   Claude Code.

@@ -12,6 +12,7 @@ import { dirname, join, relative } from "node:path";
 import {
   displayPath,
   homeDir,
+  isWindows,
   linkSpecs,
   type LinkSpec,
 } from "./config.ts";
@@ -117,11 +118,14 @@ async function applyLink(spec: LinkSpec, state: LinkState): Promise<void> {
   }
 
   try {
+    // No Windows, junctions dispensam privilégio; links de arquivo exigem o
+    // Modo de Desenvolvedor, que o bootstrap.ps1 ativa.
     const sourceStats = await lstat(spec.source);
+    const directoryType = isWindows ? "junction" : "dir";
     await symlink(
       spec.source,
       spec.target,
-      sourceStats.isDirectory() ? "dir" : "file",
+      sourceStats.isDirectory() ? directoryType : "file",
     );
   } catch (error) {
     if (await exists(spec.target)) {
