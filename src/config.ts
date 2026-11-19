@@ -15,6 +15,12 @@ export const agentsDir = join(repoRoot, "agents");
 export const instructionsDir = join(agentsDir, "instructions");
 export const skillsDir = join(agentsDir, "skills");
 export const claudeDir = join(agentsDir, "claude");
+export const skillLockFile = join(agentsDir, "skill-lock.json");
+
+// Mesmo caminho que o CLI do skills.sh usa para o lock global.
+const skillLockTarget = process.env.XDG_STATE_HOME
+  ? join(process.env.XDG_STATE_HOME, "skills", ".skill-lock.json")
+  : join(homedir(), ".agents", ".skill-lock.json");
 export const dotfilesDir = join(repoRoot, "home");
 export const linuxDotfilesDir = join(repoRoot, "home-linux");
 
@@ -38,6 +44,11 @@ const agentLinkSpecs: LinkSpec[] = [
     label: "Skills do Claude Code",
     source: skillsDir,
     target: join(homeDir, ".claude", "skills"),
+  },
+  {
+    label: "Lock global do skills.sh",
+    source: skillLockFile,
+    target: skillLockTarget,
   },
   {
     label: "Statusline do Claude Code",
