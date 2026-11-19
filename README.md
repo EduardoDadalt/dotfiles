@@ -96,6 +96,7 @@ O setup configura:
 ~/.claude/CLAUDE.md             → agents/instructions/CLAUDE.md
 ~/.agents/skills                → agents/skills/
 ~/.claude/skills                → agents/skills/
+~/.agents/.skill-lock.json      → agents/skill-lock.json
 ~/.claude/statusline.ts         → agents/claude/statusline.ts
 ~/<arquivo>                     → home/<arquivo>
 ~/<arquivo>                     → home-linux/<arquivo> (só no Linux)
@@ -145,8 +146,14 @@ bunx skills remove --global nome-da-skill
 ```
 
 Como `~/.agents/skills` aponta para este repositório, instalações globais são
-gravadas em `agents/skills/`. O CLI também mantém o lock global próprio em
-`~/.agents/.skill-lock.json`; ele não é versionado aqui.
+gravadas em `agents/skills/`. O lock global do CLI, `~/.agents/.skill-lock.json`
+(ou `$XDG_STATE_HOME/skills/.skill-lock.json`), é um link para
+`agents/skill-lock.json`: ele registra a origem de cada skill e é o que permite
+ao `skills update -g` atualizá-las em qualquer máquina. Versione-o junto com as
+skills.
+
+Skills que não estão no lock (as criadas aqui e as instaladas por outros
+programas) não são atualizadas pelo CLI.
 
 Após adicionar, atualizar ou remover uma skill, revise as mudanças antes de
 criar um commit:

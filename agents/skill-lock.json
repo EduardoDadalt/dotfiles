@@ -1,0 +1,49 @@
+{
+  "version": 3,
+  "skills": {
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "commit": "57217cf86ba38148a57af9e90d14a4c049558330",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "76a98a285cb0434f3d39e1a873823556330e398b",
+      "installedAt": "2026-11-19T12:47:05.566Z",
+      "updatedAt": "2026-11-19T12:47:05.566Z"
+    },
+    "domain-modeling": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mattpocock/skills.git",
+      "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa",
+      "skillPath": "skills/engineering/domain-modeling/SKILL.md",
+      "skillFolderHash": "ea30ee454ba264543dbe40737973b1a5afb9f0e6",
+      "pluginName": "mattpocock-skills",
+      "installedAt": "2026-11-19T12:47:09.245Z",
+      "updatedAt": "2026-11-19T12:47:09.245Z"
+    },
+    "grill-with-docs": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mattpocock/skills.git",
+      "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa",
+      "skillPath": "skills/engineering/grill-with-docs/SKILL.md",
+      "skillFolderHash": "eedaf2562c83155115e9c649fa3ecaac2e10e81d",
+      "pluginName": "mattpocock-skills",
+      "installedAt": "2026-11-19T12:47:09.257Z",
+      "updatedAt": "2026-11-19T12:47:09.257Z"
+    },
+    "grilling": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mattpocock/skills.git",
+      "commit": "5863806dd4e15c63174bee4e7515a4256792ecfa",
+      "skillPath": "skills/productivity/grilling/SKILL.md",
+      "skillFolderHash": "f551b6e0d219fdda0b6abf277f8f915b3127d1e9",
+      "pluginName": "mattpocock-skills",
+      "installedAt": "2026-11-19T12:47:09.270Z",
+      "updatedAt": "2026-11-19T12:47:09.270Z"
+    }
+  },
+  "dismissed": {}
+}
